@@ -33,6 +33,21 @@ Go to [http://127.0.0.1:8000/admin/](http://127.0.0.1:8000/admin/) and log in us
 - View the order history at `/order/history`.
 - View order details at `/order/<order_id>/`.
 
+### **Models Structure:**
+- `Category`:
+  - Id
+  - Name
+  - Description
+  - Parent Category
+
+- `Product`:
+  - Id
+  - Name
+  - Description
+  - Image
+  - Price
+  - Category
+
 ---
 
 ## **Dependencies**
