@@ -1,13 +1,17 @@
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
+
+from .models import Product, Category
 
 
 def store_home_page(request):
     return HttpResponse("Welcome to the Store Home Page!")
 
 
+def store_categories(request):
+    categories = Category.get_all()
+    return JsonResponse(categories, safe=False)
+
+
 def store_products(request):
-    return HttpResponse("This is the Store Products Page!")
-
-
-def store_product_detail(request, product_id):
-    return HttpResponse(f"Details of product {product_id}")
+    products = Product.get_all()
+    return JsonResponse(products, safe=False)
