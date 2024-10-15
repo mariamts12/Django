@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{category.name}}</title>
+</head>
+<body>
+<h1>{{category.name}}</h1>
+
+<p>The most expensive product in the category is {{most_expensive.name}} with the price: {{most_expensive.price}} $</p>
+<p>The cheapest product in the category is {{cheapest.name}} with the price: {{cheapest.price}} $</p>
+<p>The average price of the product in the category is {{average}} $</p>
+<p>The total price of the products in the category is {{total_category_price}} $</p>
+<br>
+
+{% for product in page_obj %}
+<a href="{% url 'product_details' product.id %}"><strong>{{product.name}}</strong></a> Total price: {{product.total}} $</p>
+{% endfor %}
+
+<br>
+
+   <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; First</a>
+                <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>
